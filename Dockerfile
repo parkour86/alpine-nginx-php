@@ -3,8 +3,7 @@ FROM sillelien/base-alpine:0.10
 MAINTAINER Michael Dimmock <https://github.com/michaeldim>
 
 # Install packages
-RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
-    apk-install nginx \
+RUN apk-install nginx \
     bash \
     curl \
     git \
@@ -18,14 +17,13 @@ RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/re
     php-mysql \
     php-pdo_mysql \
     php-phar \
-    phpredis@testing \
     php-openssl && \
     curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/ && \
     rm -Rf /var/www/*
 
-# Add configuration files
-ADD rootfs /
+# Copy configuration files to root
+COPY rootfs /
 
 # Fix permissions
 RUN chown -Rf nginx:www-data /var/www/

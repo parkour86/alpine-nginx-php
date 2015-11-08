@@ -1,10 +1,12 @@
+CURRENT_DIRECTORY := $(shell pwd)
 NAME = alpine-nginx-php
 TAG = latest
 IMAGE = michaeldim/$(NAME)
 
-.PHONY: all build
-
-all: build
-
 build:
-	@docker build -t $(IMAGE):$(TAG) --rm .
+	@docker build -t $(IMAGE):$(TAG) $(CURRENT_DIRECTORY)
+
+build-no-cache:
+	@docker build -t $(IMAGE):$(TAG) --no-cache $(CURRENT_DIRECTORY)
+
+.PHONY: build build-no-cache
