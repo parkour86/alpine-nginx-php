@@ -1,0 +1,7 @@
+nginx:
+  #build: .
+  image: alpine-nginx-php
+  volumes:
+   - ~/workspace/www/:/var/www:ro
+  ports:
+   - "80:80"
