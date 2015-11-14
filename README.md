@@ -3,3 +3,4 @@ Alpine Linux Docker image (~54.04 MB) running Nginx and PHP 5.6.14  Image suitab
 
 Image is based on [sillelien/base-alpine](https://hub.docker.com/r/sillelien/base-alpine/) base image which incorporates S6 for process management.
 
+docker run -d -p 80:80 -it -v www:/var/www:ro parkour86/alpine-nginx-php
